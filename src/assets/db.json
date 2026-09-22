@@ -1,0 +1,7 @@
+{
+    "member":[
+        { "id": "1", "name": "yassine ", "cin": 123456, "Type": "Admin", "CreatedDate": "2026-06-01" },
+        { "id": "2", "name": "ahmed", "cin": 654321, "Type": "User", "CreatedDate": "2026-06-02" },
+        { "id": "3", "name": "mohamed", "cin": 789012, "Type": "User", "CreatedDate": "2026-06-03" } 
+    ]
+}
