@@ -10,4 +10,5 @@ import { Member } from './member/member';
 })
 export class App {
   protected title = 'lab';
+  
 }
