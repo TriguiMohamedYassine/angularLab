@@ -3,10 +3,13 @@ import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MemberModel } from '../../Models/Member';
 import { MemberService } from '../../service/member-service';
+import { MatIconModule } from '@angular/material/icon';
+import { MemberForm } from '../member-form/member-form';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-member',
-  imports: [CommonModule , MatTableModule],
+  imports: [CommonModule , MatTableModule ,MatIconModule,MemberForm,RouterLink,RouterOutlet],
   templateUrl: './member.html',
   styleUrl: './member.css',
 })
@@ -23,5 +26,5 @@ export class Member implements OnInit{
     }
   
 
-  displayedColumns: string[] = ['id', 'name', 'cin', 'Type', 'CreatedDate'];
+  displayedColumns: string[] = ['id', 'name', 'cin', 'Type', 'CreatedDate', 'actions'];
   }

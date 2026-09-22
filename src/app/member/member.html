@@ -1,19 +1,4 @@
-<table class="members-table">
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>CIN</th>
-    <th>Type</th>
-    <th>Created Date</th>
-  </tr>
-  <tr *ngFor="let member of dataSource">
-    <td>{{ member.id }}</td>
-    <td>{{ member.name }}</td>
-    <td>{{ member.cin }}</td>
-    <td>{{ member.Type }}</td>
-    <td>{{ member.CreatedDate }}</td>
-  </tr>
-</table>
+
 
 <table mat-table [dataSource]="dataSource" class="mat-shadow-2">
 
@@ -50,7 +35,16 @@
     <td mat-cell *matCellDef="let element"> {{element.CreatedDate}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>actions</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-icon>edit</mat-icon>
+      <mat-icon>delete</mat-icon>
+    </td>
+  </ng-container>
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
+<button routerLink="/create">Add Member</button>
