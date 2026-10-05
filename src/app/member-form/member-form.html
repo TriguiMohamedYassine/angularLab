@@ -1,1 +1,27 @@
-<p>member-form works!</p>
+<form [formGroup]="memberForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>CIN</mat-label>
+    <input matInput placeholder="Ex : 12345678" formControlName="cin">
+    <mat-icon matSuffix>badge</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nom</mat-label>
+    <input matInput placeholder="Ex : Ahmed Ben Ali" formControlName="name">
+    <mat-icon matSuffix>person</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Type</mat-label>
+    <input matInput placeholder="Ex : étudiant" formControlName="type">
+    <mat-icon matSuffix>category</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Date de création</mat-label>
+    <input matInput placeholder="Ex : 2026-09-28" formControlName="created">
+    <mat-icon matSuffix>event</mat-icon>
+  </mat-form-field>
+
+  <button type="submit">Enregistrer</button>
+</form>

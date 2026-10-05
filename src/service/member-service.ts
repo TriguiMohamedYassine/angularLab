@@ -17,4 +17,23 @@ export class MemberService {
   getAllMembers(){
     return this.http.get<MemberModel[]>('http://localhost:3000/member')
   }
+
+  getMemberById(id: String) {
+    return this.http.get<MemberModel>(`http://localhost:3000/member/${id}`);
+  }
+
+  addMember(member: MemberModel) {
+    return this.http.post<MemberModel>('http://localhost:3000/member', member);
+  }
+
+  updateMember(id: String, member: MemberModel) {
+    return this.http.put<MemberModel>(`http://localhost:3000/member/${id}`, member);
+  }
+  deleteMember(id: String) {
+    // Implémentation pour supprimer un membre
+    return this.http.delete<void>(`http://localhost:3000/member/${id}`);
+  }
+  updateMember2(id: String, newName: String) {
+    return this.http.patch<void>(`http://localhost:3000/member/${id}`, { name: newName });
+  }
 }

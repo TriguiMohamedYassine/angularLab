@@ -1,30 +1,45 @@
 import { Component, OnInit } from '@angular/core';
+import { MemberModel } from '../../Models/Member';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
-import { MemberModel } from '../../Models/Member';
 import { MemberService } from '../../service/member-service';
 import { MatIconModule } from '@angular/material/icon';
-import { MemberForm } from '../member-form/member-form';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { ConfirmDialog } from '../confirm-dialog/confirm-dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-member',
-  imports: [CommonModule , MatTableModule ,MatIconModule,MemberForm,RouterLink,RouterOutlet],
+  imports: [CommonModule, MatTableModule, MatIconModule, RouterLink],
   templateUrl: './member.html',
   styleUrl: './member.css',
 })
-export class Member implements OnInit{
+export class Member implements OnInit {
+  
+  dataSource:MemberModel[] = [];
+  displayedColumns: string[] = ['id', 'cin', 'name', 'type', 'created', 'actions'];
 
-  dataSource:MemberModel[]=[] 
+  constructor(private memberService: MemberService, private dialog: MatDialog) { }
+  
+  ngOnInit() {
+    this.memberService.getAllMembers().subscribe((members: MemberModel[]) => {
+      this.dataSource = members;
+    });
+  }
 
-  //injection de dependances
-  constructor(private MS:MemberService){}
-    ngOnInit(){
-      this.MS.getAllMembers().subscribe((response)=>{
-        this.dataSource=response
-      })
-    }
+  deleteMember(id: String) {
+    const dialogRef = this.dialog.open(ConfirmDialog, {
+      width: '250px',
+    });
+    
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.memberService.deleteMember(id).subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    });
+  }
   
 
-  displayedColumns: string[] = ['id', 'name', 'cin', 'Type', 'CreatedDate', 'actions'];
-  }
+}

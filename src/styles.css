@@ -1,4 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===== Styles globaux ===== */
+:root {
+  --primary: #005249;
+  --primary-dark: #003b35;
+  --primary-soft: #e5f2f0;
+  --danger: #ef4444;
+  --danger-soft: #fee2e2;
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(31, 41, 55, 0.08);
+}
+
+* { box-sizing: border-box; }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(135deg, var(--primary-soft) 0%, var(--bg) 50%, #f0f7f5 100%);
+  background-attachment: fixed;
+  color: var(--text);
+}
+
+/* Bouton générique réutilisable (les boutons Angular Material gardent leur style) */
+button:not([class*="mat-"]) {
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-weight: 500;
+  background: var(--primary);
+  color: #fff;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+button:not([class*="mat-"]):hover { background: var(--primary-dark); box-shadow: 0 6px 16px rgba(0, 82, 73, 0.35); }
+button:not([class*="mat-"]):active { transform: translateY(1px); }
+
+/* Boîte de dialogue Material : coins arrondis */
+.mat-mdc-dialog-surface { border-radius: var(--radius) !important; }
+
+/* Menu déroulant utilisateur (affiché dans un overlay, donc style global) */
+.mat-mdc-menu-panel {
+  border-radius: 14px !important;
+  box-shadow: var(--shadow) !important;
+}
+.mat-mdc-menu-item .mat-icon {
+  color: var(--primary);
+}
+.mat-mdc-menu-item:hover {
+  background: var(--primary-soft) !important;
+}
