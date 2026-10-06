@@ -5,8 +5,18 @@ import { Dashboard } from './dashboard/dashboard';
 import { Tools } from './tools/tools';
 import { Articles } from './articles/articles';
 import { Events } from './events/events';
+import { Login } from './login/login';
 
 export const routes: Routes = [
+    {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'login'
+    },
+    {
+        path: 'login',
+        component:Login
+    },
     {
         path: 'create',
         component:MemberForm

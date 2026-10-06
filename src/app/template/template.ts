@@ -5,8 +5,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterLink, RouterOutlet } from '@angular/router';
-
+import { RouterLink, RouterOutlet, Router } from '@angular/router';
+import { AuthService } from '../../service/auth-service';
 
 @Component({
   selector: 'app-template',
@@ -15,5 +15,11 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './template.css',
 })
 export class Template {
+  constructor(private authService: AuthService, private router: Router) {}
 
+  logout() {
+    this.authService.signOut().then(() => {
+      this.router.navigate(['']);
+    });
+  }
 }
